@@ -3,16 +3,12 @@
 
     --primary-1 : #3498db;
     --primary-2 :#2980b9;
-
     --success-1 : #2ecc71;
     --success-2 : #27ae60;
-
     --text-color:#444;
     --text-primary-color:#ffffff;
-
     --danger-1:#e74c3c;
     --danger-2:#c0392b;
-
     --gray-1:#f6f6f6;
     --gray-2:#ddd;
     --gray-3:#95a5a6;
@@ -51,5 +47,69 @@ a{
 ul{
     list-style: none;
     padding: 0;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.align-item-center{
+    align-items: center;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.flex-fill{
+    flex: 1 1 auto;
+}
+
+.p-10{
+    padding: 10px;
+}
+
+.p-20{
+    padding: 20px;
+}
+
+.p-30{
+    padding: 30px;
+}
+
+.m-10{
+    margin: 10px;
+}
+
+.m-20{
+    margin: 20px;
+}
+
+.m-30{
+    margin: 30px;
+}
+
+.b1{
+    background-color: red;
+}
+
+.b2{
+    background-color: blue;
+}
+
+.b3{
+    background-color: green;
+}
+
+.b4{
+    background-color: yellow;
 }
 
