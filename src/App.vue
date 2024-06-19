@@ -7,10 +7,10 @@ import ShopView from './components/Shop/ShopView.vue'
 
 <template>
   <div class="main-container">
-    <TheHeader class="header b1" />
-    <ShopView class="shop b2" />
+    <TheHeader class="header" />
+    <!-- <ShopView class="shop b2" />
     <CartView class="cart b3" />
-    <TheFooter class="footer b4" />
+    <TheFooter class="footer" /> -->
   </div>
 </template>
 
