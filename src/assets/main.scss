@@ -1,5 +1,5 @@
 :root{
-    --font-family : 'roboto', 'sans-serif'
+    --font-family : 'roboto', 'sans-serif';
 
     --primary-1 : #3498db;
     --primary-2 :#2980b9;
@@ -97,6 +97,10 @@ ul{
     margin: 30px;
 }
 
+.m-b-10{
+    margin-bottom: 10px;
+}
+
 .b1{
     background-color: red;
 }
@@ -111,5 +115,13 @@ ul{
 
 .b4{
     background-color: yellow;
+}
+
+.b5{
+    background-color: violet;
+}
+
+.b6{
+    background-color: burlywood;
 }
 

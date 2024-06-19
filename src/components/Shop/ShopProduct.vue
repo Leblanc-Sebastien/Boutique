@@ -3,8 +3,8 @@
 </script>
 
 <template>
-    <div>
-        <h1>Shop</h1>
+    <div class="b6">
+        <h1>Shop Product</h1>
     </div>
 </template>
 

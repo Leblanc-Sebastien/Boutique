@@ -3,8 +3,8 @@
 </script>
 
 <template>
-    <div>
-        <h1>Cart</h1>
+    <div class="b5 m-b-10">
+        <h1>Cart Product</h1>
     </div>
 </template>
 

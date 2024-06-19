@@ -1,45 +1,43 @@
 <script setup lang="ts">
-  import TheHeader from './components/Header.vue'
-  import TheFooter from './components/Footer.vue'
-  import Cart from './components/Cart.vue'
-  import Shop from './components/Shop.vue'
+import TheHeader from './components/Header.vue'
+import TheFooter from './components/Footer.vue'
+import CartView from './components/Cart/CartView.vue'
+import ShopView from './components/Shop/ShopView.vue'
 </script>
 
 <template>
   <div class="main-container">
-    <TheHeader class="header b1"/>    
-    <Shop class="shop b2"/>
-    <Cart class="cart b3"/>  
-    <TheFooter class="footer b4"/>
+    <TheHeader class="header b1" />
+    <ShopView class="shop b2" />
+    <CartView class="cart b3" />
+    <TheFooter class="footer b4" />
   </div>
 </template>
 
 <style scoped lang="scss">
 @import './assets/main.scss';
 
-.main-container{
+.main-container {
   display: grid;
   grid-template-areas: "header header" "shop cart" "footer footer";
-  grid-template-columns: 70%;
+  grid-template-columns: 75% 25%;
   grid-template-rows: 48px auto 48px;
-  min-width: 100vh;
+  min-height: 100vh;
 }
 
-.header{
+.header {
   grid-area: header;
 }
 
-.shop{
+.shop {
   grid-area: shop;
 }
 
-.cart{
+.cart {
   grid-area: cart;
 }
 
-.footer{
+.footer {
   grid-area: footer;
 }
-
-
 </style>
