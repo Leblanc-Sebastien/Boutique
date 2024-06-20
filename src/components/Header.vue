@@ -5,10 +5,11 @@
 <template>
     <header class="d-flex flex-row align-item-center">
         <ul class="d-flex flex-row align-item-center">
-            <li><a href="#"><img src="../../src/assets/logo.svg" alt="logo Vue"></a></li>
-            <li>Dyma</li>
+            <li class="d-flex flex-row align-item-center"><a href="#"><img src="../../src/assets/logo.svg" alt="logo Vue"><span>Dyma</span></a></li>
+            <li><a href="#">Boutique</a></li>
+            <li><a href="#">Admin</a></li>
         </ul>
-        <ul class="d-flex flex-row align-item-center">
+        <ul class="d-flex flex-row align-item-center sign-link">
             <li><a href="#">Inscription</a></li>
             <li><a href="#">Connexion</a></li>
         </ul>
@@ -16,21 +17,27 @@
 </template>
 
 <style lang="scss" scoped>
-    header{
-        background-color: var(--primary-2);
+header {
+    background-color: var(--primary-2);
+    color: var(--text-primary-color);
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content:space-around;
+
+    a {
         color: var(--text-primary-color);
-        padding-left: 20px;
-        padding-right: 20px;
-        justify-content: space-around;
-        a{
-            color: var(--text-primary-color);
-            img{
-                width: 20px;
-            }
+
+        span{
+            font-weight: 700;
         }
 
-        ul{
-            gap: 20px;
+        img {
+            width: 20px;
         }
     }
+
+    ul {
+        gap: 10px;
+    }
+}
 </style>

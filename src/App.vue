@@ -8,9 +8,9 @@ import ShopView from './components/Shop/ShopView.vue'
 <template>
   <div class="main-container">
     <TheHeader class="header" />
-    <!-- <ShopView class="shop b2" />
-    <CartView class="cart b3" />
-    <TheFooter class="footer" /> -->
+    <ShopView class="shop" />
+    <!-- <CartView class="cart b3" /> -->
+    <TheFooter class="footer" />
   </div>
 </template>
 
@@ -18,6 +18,7 @@ import ShopView from './components/Shop/ShopView.vue'
 @import './assets/main.scss';
 
 .main-container {
+  background-color: var(--gray-2);
   display: grid;
   grid-template-areas: "header header" "shop cart" "footer footer";
   grid-template-columns: 75% 25%;
