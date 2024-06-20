@@ -18,7 +18,8 @@
         border-radius: 4px;
         justify-content: space-between;
         padding: 10px 10px;
-        background-color: var(--gray-1);
+        background-color: var(--gray-2);
+        border: 1px solid var(--gray-3);
 
         h3{
             font-weight: 700;
@@ -26,8 +27,6 @@
         }
         
         .product{
-            border: 1px solid var(var(--gray-2));
-            background-color: var(--gray-1);
             gap: 10px;
 
             span{

@@ -11,6 +11,8 @@
 
 <style lang="scss" scoped>
     .card-view-container{
+        border-left: 1px solid var(--gray-3);
+        background-color: var(--gray-1);
         h1{
             font-size: 1.3em;
             margin-bottom: 20px;
