@@ -3,11 +3,49 @@
 </script>
 
 <template>
-    <div class="b5 m-b-10">
-        <h1>Cart Product</h1>
+    <div class="m-b-10 d-flex flex-row align-item-center cart">
+        <h3>AlienWare 13 pouces</h3>
+        <div class="product d-flex flex-row align-item-center">
+            <span>Prix : 1500 €</span>
+            <button>Supprimer</button> 
+        </div>        
     </div>
 </template>
 
 <style lang="scss" scoped>
+    .cart{    
+        background-color: #fff;  
+        border-radius: 4px;
+        justify-content: space-between;
+        padding: 10px 10px;
+        background-color: var(--gray-1);
 
+        h3{
+            font-weight: 700;
+            font-size: 1em;
+        }
+        
+        .product{
+            border: 1px solid var(var(--gray-2));
+            background-color: var(--gray-1);
+            gap: 10px;
+
+            span{
+                font-size: 1em;
+            }
+        }
+
+        button {
+            background-color: var(--danger-1);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+            font-size: 0.8em;
+        }
+
+        button:hover{
+            background-color: var(--danger-2);
+        }
+    }
 </style>

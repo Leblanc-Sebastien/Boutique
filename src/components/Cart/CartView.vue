@@ -3,12 +3,17 @@
 </script>
 
 <template>
-    <div class="p-20">
-        <h1 class="m-b-10">Cart</h1>
+    <div class="p-10 card-view-container">
+        <h1 class="m-b-10">Votre panier :</h1>
         <CartProductList/>
     </div>
 </template>
 
 <style lang="scss" scoped>
-
+    .card-view-container{
+        h1{
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+    }
 </style>
