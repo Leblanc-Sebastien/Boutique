@@ -14,15 +14,14 @@
                 <button>Ajouter au panier</button>
             </div>
         </div>
-
     </div>
 </template>
 
 <style lang="scss" scoped>
 .product {
     background-color: #fff;
-    border: var(--border);
-    border-radius: var(--border-radius);
+    border: 1px solid var(var(--gray-2));
+    border-radius: 4px;
 
     h2 {
         font-size: 1.2em;
@@ -50,9 +49,10 @@
             padding-top: 5px;
             padding-bottom: 5px;
             color: #fff;
-            border-radius: 5px;
+            border-radius: 4px;
             border: 1px solid var(--primary-1);
             transition: 0.2s;
+            cursor:pointer;
         }
         button:hover{
             background-color: var(--primary-2);
