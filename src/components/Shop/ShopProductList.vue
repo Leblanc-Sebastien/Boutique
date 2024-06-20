@@ -19,7 +19,7 @@ import ShopProduct from './ShopProduct.vue'
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-auto-rows: 300px;
+    grid-auto-rows: 410px;
     gap: 20px;
 }
 </style>
