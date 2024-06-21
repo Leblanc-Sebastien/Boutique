@@ -31,7 +31,7 @@
     }
 
     &-image {
-        background-image: url('../../assets/alienware.PNG');
+        background-image: url(src/assets/images/alienware.PNG);
         background-size: cover;
         background-position: center;
         height: 250px;
