@@ -22,7 +22,9 @@ const addProductInCart = (idProduct:number) :void => {
   }
 }
 
-
+const delProductInCart = (idProduct:number) :void =>{ 
+    state.cart = state.cart.filter((product) => product.id !== idProduct)
+}
 
 </script>
 
@@ -30,7 +32,7 @@ const addProductInCart = (idProduct:number) :void => {
   <div class="main-container">
     <TheHeader class="header" />
     <ShopView class="shop" v-bind:products="state.products" v-on:add-product-to-cart="addProductInCart"/>
-    <CartView class="cart" />
+    <CartView class="cart" v-bind:cart="state.cart" v-on:del-product-in-cart="delProductInCart"/>
     <TheFooter class="footer" />
   </div>
 </template>

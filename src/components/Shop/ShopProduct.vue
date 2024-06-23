@@ -13,7 +13,7 @@ const emit = defineEmits<{
 
 <template>
     <div class="product">
-        <div class="product-image" v-bind:style="{ backgroundImage: `url(${product.image})`}"></div>
+        <div class="product-image" v-bind:style="{ backgroundImage: `url(${product.image})` }"></div>
         <div class="p-10">
             <h2>{{ product.title }}</h2>
             <p>{{ product.description }}</p>
