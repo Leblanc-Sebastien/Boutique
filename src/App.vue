@@ -7,8 +7,21 @@ import ShopView from './components/Shop/ShopView.vue'
 import data from './data/product'
 import type { ProductInterface } from './interfaces/product.interface'
 
+const state = reactive<{
+  products : ProductInterface[],
+  cart :ProductInterface[]
+}>({
+  products : data,
+  cart : []
+})
 
-const products = reactive<ProductInterface[]>(data)
+const addProductInCart = (idProduct:number) :void => {
+  const product = state.products.find((product) => product.id === idProduct)
+  if(product && !state.cart.find((product) => product.id === idProduct)){
+    state.cart.push({...product})
+  }
+}
+
 
 
 </script>
@@ -16,7 +29,7 @@ const products = reactive<ProductInterface[]>(data)
 <template>
   <div class="main-container">
     <TheHeader class="header" />
-    <ShopView class="shop" v-bind:products="products"/>
+    <ShopView class="shop" v-bind:products="state.products" v-on:add-product-to-cart="addProductInCart"/>
     <CartView class="cart" />
     <TheFooter class="footer" />
   </div>

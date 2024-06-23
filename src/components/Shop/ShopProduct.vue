@@ -5,6 +5,10 @@ defineProps<{
     product: ProductInterface
 }>()
 
+const emit = defineEmits<{
+    (e: 'addProductToCart', productId: number): void
+}>()
+
 </script>
 
 <template>
@@ -15,7 +19,7 @@ defineProps<{
             <p>{{ product.description }}</p>
             <div class="product-footer d-flex flex-row align-item-center">
                 <strong>Prix : {{ product.price }}€</strong>
-                <button>Ajouter au panier</button>
+                <button v-on:click="emit('addProductToCart', product.id)">Ajouter au panier</button>
             </div>
         </div>
     </div>

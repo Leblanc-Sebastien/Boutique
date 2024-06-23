@@ -6,11 +6,15 @@ defineProps<{
     products: ProductInterface[]
 }>()
 
+const emit = defineEmits<{
+    (e: 'addProductToCart', productId: number): void
+}>()
+
 </script>
 
 <template>
     <div>
-        <ShopProductList v-bind:products="products"/>
+        <ShopProductList v-bind:products="products" v-on:add-product-to-cart="emit('addProductToCart', $event)"/>
     </div>
 </template>
 
