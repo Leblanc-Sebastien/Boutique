@@ -1,14 +1,22 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
 import TheHeader from './components/Header.vue'
 import TheFooter from './components/Footer.vue'
 import CartView from './components/Cart/CartView.vue'
 import ShopView from './components/Shop/ShopView.vue'
+import data from './data/product'
+import type { ProductInterface } from './interfaces/product.interface'
+
+
+const products = reactive<ProductInterface[]>(data)
+
+
 </script>
 
 <template>
   <div class="main-container">
     <TheHeader class="header" />
-    <ShopView class="shop" />
+    <ShopView class="shop" v-bind:products="products"/>
     <CartView class="cart" />
     <TheFooter class="footer" />
   </div>

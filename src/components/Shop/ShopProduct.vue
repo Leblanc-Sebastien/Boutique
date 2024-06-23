@@ -1,16 +1,20 @@
 <script setup lang="ts">
+import type { ProductInterface } from '../../interfaces/product.interface'
+
+defineProps<{
+    product: ProductInterface
+}>()
 
 </script>
 
 <template>
     <div class="product">
-        <div class="product-image"></div>
+        <div class="product-image" v-bind:style="{ backgroundImage: `url(${product.image})`}"></div>
         <div class="p-10">
-            <h2>Alienware 17 pouces</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia laudantium corrupti saepe quasi officiis
-                labore?</p>
+            <h2>{{ product.title }}</h2>
+            <p>{{ product.description }}</p>
             <div class="product-footer d-flex flex-row align-item-center">
-                <strong>Prix : 2100€</strong>
+                <strong>Prix : {{ product.price }}€</strong>
                 <button>Ajouter au panier</button>
             </div>
         </div>
@@ -26,12 +30,12 @@
     h2 {
         font-size: 1.2em;
     }
-    p{
+
+    p {
         font-size: 0.9em;
     }
 
     &-image {
-        background-image: url(src/assets/images/alienware.PNG);
         background-size: cover;
         background-position: center;
         height: 250px;
@@ -42,7 +46,7 @@
     &-footer {
         justify-content: space-between;
 
-        button{
+        button {
             background-color: var(--primary-1);
             padding-left: 10px;
             padding-right: 10px;
@@ -52,9 +56,10 @@
             border-radius: 4px;
             border: 1px solid var(--primary-1);
             transition: 0.2s;
-            cursor:pointer;
+            cursor: pointer;
         }
-        button:hover{
+
+        button:hover {
             background-color: var(--primary-2);
         }
     }

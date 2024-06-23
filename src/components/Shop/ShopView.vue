@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import type { ProductInterface } from '@/interfaces/product.interface';
 import ShopProductList from './ShopProductList.vue'
 
+defineProps<{
+    products: ProductInterface[]
+}>()
 
 </script>
 
 <template>
     <div>
-        <ShopProductList />
+        <ShopProductList v-bind:products="products"/>
     </div>
 </template>
 
