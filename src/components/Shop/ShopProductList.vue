@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ShopProduct from './ShopProduct.vue'
-import type { ProductInterface } from '@/interfaces/product.interface'
+import type { ProductInterface } from '@/interfaces/Product.interface'
 
 defineProps<{
     products: ProductInterface[]
@@ -14,11 +14,8 @@ const emit = defineEmits<{
 
 <template>
     <div class="grid-container p-20">
-        <ShopProduct v-for="product of products" 
-            v-bind:key="product.id" 
-            v-bind:product="product" 
-            v-on:add-product-to-cart="emit('addProductToCart', $event)"
-        />
+        <ShopProduct v-for="product of products" v-bind:key="product.id" v-bind:product="product"
+            v-on:add-product-to-cart="emit('addProductToCart', $event)" />
     </div>
 </template>
 

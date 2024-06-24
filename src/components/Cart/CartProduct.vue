@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { ProductInterface } from '@/interfaces/product.interface';
+import type {ProductCartInterface} from '@/interfaces/Index'
 
 defineProps<{
-    product: ProductInterface
+    product: ProductCartInterface
 }>()
 
 const emit = defineEmits<{
@@ -13,8 +13,11 @@ const emit = defineEmits<{
 
 <template>
     <div class="m-b-10 d-flex flex-row align-item-center cart">
-        <h3> {{ product.title }}</h3>
-        <div class="product d-flex flex-row align-item-center">
+        <div class="d-flex align-item-center cart-product-name">
+            <h3> {{ product.title }}</h3>
+            <span>x {{ product.quantity }}</span>
+        </div>     
+        <div class="product d-flex flex-row align-item-center">         
             <span>Prix : {{ product.price }} €</span>
             <button v-on:click="emit('delProductInCart', product.id)">Supprimer</button>
         </div>
@@ -29,6 +32,10 @@ const emit = defineEmits<{
     padding: 10px 10px;
     background-color: var(--gray-2);
     border: 1px solid var(--gray-3);
+
+    .cart-product-name{
+        gap:10px
+    }
 
     h3 {
         font-weight: 700;

@@ -5,25 +5,26 @@ import TheFooter from './components/Footer.vue'
 import CartView from './components/Cart/CartView.vue'
 import ShopView from './components/Shop/ShopView.vue'
 import data from './data/product'
-import type { ProductInterface } from './interfaces/product.interface'
+import type { ProductInterface } from '@/interfaces/Index'
+import type { ProductCartInterface } from '@/interfaces/Index'
 
 const state = reactive<{
-  products : ProductInterface[],
-  cart :ProductInterface[]
+  products: ProductInterface[],
+  cart: ProductCartInterface[]
 }>({
-  products : data,
-  cart : []
+  products: data,
+  cart: []
 })
 
-const addProductInCart = (idProduct:number) :void => {
+const addProductInCart = (idProduct: number): void => {
   const product = state.products.find((product) => product.id === idProduct)
-  if(product && !state.cart.find((product) => product.id === idProduct)){
-    state.cart.push({...product})
+  if (product) {
+    state.cart.push({ ...product, quantity: 1 })
   }
 }
 
-const delProductInCart = (idProduct:number) :void =>{ 
-    state.cart = state.cart.filter((product) => product.id !== idProduct)
+const delProductInCart = (idProduct: number): void => {
+  state.cart = state.cart.filter((product) => product.id !== idProduct)
 }
 
 </script>
@@ -31,8 +32,8 @@ const delProductInCart = (idProduct:number) :void =>{
 <template>
   <div class="main-container">
     <TheHeader class="header" />
-    <ShopView class="shop" v-bind:products="state.products" v-on:add-product-to-cart="addProductInCart"/>
-    <CartView class="cart" v-bind:cart="state.cart" v-on:del-product-in-cart="delProductInCart"/>
+    <ShopView class="shop" v-bind:products="state.products" v-on:add-product-to-cart="addProductInCart" />
+    <CartView class="cart" v-bind:cart="state.cart" v-on:del-product-in-cart="delProductInCart" />
     <TheFooter class="footer" />
   </div>
 </template>
