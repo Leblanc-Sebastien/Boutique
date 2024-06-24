@@ -28,7 +28,14 @@ const addProductInCart = (idProduct: number): void => {
 }
 
 const delProductInCart = (idProduct: number): void => {
-  state.cart = state.cart.filter((product) => product.id !== idProduct)
+  const productInCart = state.cart.find((product) => product.id === idProduct)
+  if (productInCart) {
+    if (productInCart.quantity > 1) {
+      productInCart.quantity--
+    } else {
+      state.cart = state.cart.filter((product) => product.id !== idProduct)
+    }
+  }
 }
 
 </script>
