@@ -8,7 +8,7 @@ import data from './data/product'
 import type { ProductInterface, ProductCartInterface } from '@/interfaces/Index'
 
 const state = reactive<{
-  products: ProductInterface[],
+  products: ProductInterface[]
   cart: ProductCartInterface[]
 }>({
   products: data,
@@ -37,13 +37,16 @@ const delProductInCart = (idProduct: number): void => {
     }
   }
 }
-
 </script>
 
 <template>
   <div class="main-container">
     <TheHeader class="header" />
-    <ShopView class="shop" v-bind:products="state.products" v-on:add-product-to-cart="addProductInCart" />
+    <ShopView
+      class="shop"
+      v-bind:products="state.products"
+      v-on:add-product-to-cart="addProductInCart"
+    />
     <CartView class="cart" v-bind:cart="state.cart" v-on:del-product-in-cart="delProductInCart" />
     <TheFooter class="footer" />
   </div>
@@ -55,7 +58,7 @@ const delProductInCart = (idProduct: number): void => {
 .main-container {
   background-color: var(--gray-2);
   display: grid;
-  grid-template-areas: "header header" "shop cart" "footer footer";
+  grid-template-areas: 'header header' 'shop cart' 'footer footer';
   grid-template-columns: 75% 25%;
   grid-template-rows: 48px auto 48px;
   min-height: 100vh;
