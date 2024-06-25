@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {ProductCartInterface} from '@/interfaces/Index'
+import type { ProductCartInterface } from '@/interfaces/Index'
 
 defineProps<{
     product: ProductCartInterface
@@ -16,8 +16,8 @@ const emit = defineEmits<{
         <div class="d-flex align-item-center cart-product-name">
             <h3> {{ product.title }}</h3>
             <span>x {{ product.quantity }}</span>
-        </div>     
-        <div class="product d-flex flex-row align-item-center">         
+        </div>
+        <div class="product d-flex flex-row align-item-center">
             <span>Prix : {{ product.price }} €</span>
             <button v-on:click="emit('delProductInCart', product.id)">Supprimer</button>
         </div>
@@ -33,8 +33,8 @@ const emit = defineEmits<{
     background-color: var(--gray-2);
     border: 1px solid var(--gray-3);
 
-    .cart-product-name{
-        gap:10px
+    .cart-product-name {
+        gap: 10px
     }
 
     h3 {
@@ -51,16 +51,18 @@ const emit = defineEmits<{
     }
 
     button {
-        background-color: var(--danger-1);
+        background-color: var(--danger-2);
         color: #fff;
         padding: 5px 10px;
         border-radius: 4px;
         border: none;
         font-size: 0.8em;
+        transition: 0.2s;
+        cursor: pointer;
     }
 
     button:hover {
-        background-color: var(--danger-2);
+        background-color: var(--danger-1);
     }
 }
 </style>
