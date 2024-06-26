@@ -40,13 +40,11 @@ const delProductInCart = (idProduct: number): void => {
 </script>
 
 <template>
-  <div class="main-container">
+  <div class="main-container" :class="{
+    gridEmpty: state.cart.length === 0
+  }">
     <TheHeader class="header" />
-    <ShopView
-      class="shop"
-      v-bind:products="state.products"
-      v-on:add-product-to-cart="addProductInCart"
-    />
+    <ShopView class="shop" v-bind:products="state.products" v-on:add-product-to-cart="addProductInCart" />
     <CartView class="cart" v-bind:cart="state.cart" v-on:del-product-in-cart="delProductInCart" />
     <TheFooter class="footer" />
   </div>
@@ -62,6 +60,11 @@ const delProductInCart = (idProduct: number): void => {
   grid-template-columns: 75% 25%;
   grid-template-rows: 48px auto 48px;
   min-height: 100vh;
+}
+
+.gridEmpty {
+  grid-template-areas: 'header' 'shop' 'footer';
+  grid-template-columns: 100%;
 }
 
 .header {
