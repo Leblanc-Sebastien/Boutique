@@ -1,18 +1,37 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import TheHeader from './components/Header.vue'
 import TheFooter from './components/Footer.vue'
 import CartView from './components/Cart/CartView.vue'
 import ShopView from './components/Shop/ShopView.vue'
 import data from './data/product'
-import type { ProductInterface, ProductCartInterface } from '@/interfaces/Index'
+import type { ProductInterface, ProductCartInterface, FiltersInterface, FilterUpdate } from '@/interfaces/Index'
+import { DEFAULT_FILTERS } from './data/filters'
 
 const state = reactive<{
   products: ProductInterface[]
   cart: ProductCartInterface[]
+  filters: FiltersInterface
 }>({
   products: data,
-  cart: []
+  cart: [],
+  filters: { ...DEFAULT_FILTERS }
+})
+
+const filteredProducts = computed(() => {
+  return state.products.filter((product) => {
+    if (
+      product.title.toLocaleLowerCase().startsWith(state.filters.search.toLocaleLowerCase()) &&
+      product.price >= state.filters.priceRange[0] &&
+      product.price <= state.filters.priceRange[1] &&
+      (product.category === state.filters.category || state.filters.category === 'all')
+    ) {
+      return true
+    }
+    else {
+      return false
+    }
+  })
 })
 
 const addProductInCart = (idProduct: number): void => {
@@ -37,6 +56,19 @@ const delProductInCart = (idProduct: number): void => {
     }
   }
 }
+
+const updateFilter = (filterUpdate: FilterUpdate) => {
+  if (filterUpdate.search !== undefined) {
+    state.filters.search = filterUpdate.search
+  } else if (filterUpdate.priceRange) {
+    state.filters.priceRange = filterUpdate.priceRange
+  } else if (filterUpdate.category) {
+    state.filters.category = filterUpdate.category
+  } else {
+    state.filters = { ...DEFAULT_FILTERS }
+  }
+}
+
 </script>
 
 <template>
@@ -44,7 +76,11 @@ const delProductInCart = (idProduct: number): void => {
     gridEmpty: state.cart.length === 0
   }">
     <TheHeader class="header" />
-    <ShopView class="shop" v-bind:products="state.products" v-on:add-product-to-cart="addProductInCart" />
+    <ShopView class="shop" 
+      v-bind:products="filteredProducts"
+      v-bind:filters="state.filters"
+      v-on:updateFilter="updateFilter" 
+      v-on:add-product-to-cart="addProductInCart" />
     <CartView class="cart" v-bind:cart="state.cart" v-on:del-product-in-cart="delProductInCart" />
     <TheFooter class="footer" />
   </div>
