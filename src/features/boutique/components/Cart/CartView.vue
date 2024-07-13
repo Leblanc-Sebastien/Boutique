@@ -22,7 +22,9 @@ const totalPrice = computed(() =>
   <div v-if="totalPrice > 0" class="p-20 card-view-container d-flex flex-column">
     <div>
       <h1 class="m-b-10">Votre panier :</h1>
-      <CartProductList v-bind:cart="cart" v-on:del-product-in-cart="emit('delProductInCart', $event)" />
+      <CartProductList 
+        v-bind:cart="cart" 
+        v-on:del-product-in-cart="emit('delProductInCart', $event)" />
     </div>
     <div>
       <button>Commander ({{ totalPrice }}) €</button>
