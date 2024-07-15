@@ -70,10 +70,18 @@ const updateFilter = (filterUpdate: FilterUpdate) => {
 </script>
 
 <template>
-  <div class="boutique-container" :class="{ 'grid-empty': state.cart.length === 0 }">
-    <ShopView class="shop" v-bind:products="filteredProducts" v-bind:filters="state.filters"
-      v-on:updateFilter="updateFilter" v-on:add-product-to-cart="addProductInCart" />
-    <CartView class="cart" v-bind:cart="state.cart" v-on:del-product-in-cart="delProductInCart" />
+  <div class="boutique-container" 
+      :class="{ 'grid-empty': state.cart.length === 0 }">
+    <ShopView 
+      class="shop" 
+      v-bind:products="filteredProducts" 
+      v-bind:filters="state.filters"
+      v-on:updateFilter="updateFilter" 
+      v-on:add-product-to-cart="addProductInCart" />
+    <CartView 
+      class="cart" 
+      v-bind:cart="state.cart" 
+      v-on:del-product-in-cart="delProductInCart" />
   </div>
 </template>
 
