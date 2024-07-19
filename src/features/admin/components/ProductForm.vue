@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForm, useField } from 'vee-validate';
+import { useForm, useField, useResetForm } from 'vee-validate';
 import z from 'zod';
 import { toTypedSchema } from '@vee-validate/zod'
 // import type { ProductInterface } from '@/interfaces/Product.interface';
@@ -27,9 +27,19 @@ const image = useField('image')
 const price = useField('price')
 const category = useField('category')
 
-const trySubmit = handleSubmit((formValues) => {
-    console.log(formValues)
-    console.log(isSubmitting.value)
+const trySubmit = handleSubmit(async (formValues, action) => {
+    try {
+        await fetch('https://restapi.fr/api/products', {
+            method: 'POST',
+            headers: {
+                "content-Type": 'application/json'
+            },
+            body: JSON.stringify(formValues)
+        })
+        action.resetForm()
+    } catch (error) {
+        console.log(error)
+    }
 })
 </script>
 
