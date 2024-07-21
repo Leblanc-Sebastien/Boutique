@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { ProductInterface } from '../../interfaces/Product.interface'
+import type { ProductInterface } from '../../../../interfaces/Index'
 
 defineProps<{
     product: ProductInterface
 }>()
 
 const emit = defineEmits<{
-    (e: 'addProductToCart', productId: number): void
+    (e: 'addProductToCart', productId: string): void
 }>()
 
 </script>
@@ -19,7 +19,7 @@ const emit = defineEmits<{
             <p>{{ product.description }}</p>
             <div class="product-footer d-flex flex-row align-item-center">
                 <strong>Prix : {{ product.price }}€</strong>
-                <button v-on:click="emit('addProductToCart', product.id)">Ajouter au panier</button>
+                <button v-on:click="emit('addProductToCart', product._id)">Ajouter au panier</button>
             </div>
         </div>
     </div>

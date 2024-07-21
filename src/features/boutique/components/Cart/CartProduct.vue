@@ -6,7 +6,7 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-    (e: 'delProductInCart', productId: number): void
+    (e: 'delProductInCart', productId: string): void
 }>()
 
 </script>
@@ -19,7 +19,7 @@ const emit = defineEmits<{
         </div>
         <div class="product d-flex flex-row align-item-center">
             <span>Prix : {{ product.price }} €</span>
-            <button v-on:click="emit('delProductInCart', product.id)">Supprimer</button>
+            <button v-on:click="emit('delProductInCart', product._id)">Supprimer</button>
         </div>
     </div>
 </template>

@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { useForm, useField, useResetForm } from 'vee-validate';
+import { useForm, useField } from 'vee-validate';
 import z from 'zod';
 import { toTypedSchema } from '@vee-validate/zod'
-// import type { ProductInterface } from '@/interfaces/Product.interface';
-
+// import { seed } from '../../../data/seed'
 
 const required = { required_error: "Champ obligatoire !" }
 
@@ -41,6 +40,8 @@ const trySubmit = handleSubmit(async (formValues, action) => {
         console.log(error)
     }
 })
+
+// seed()
 </script>
 
 <template>

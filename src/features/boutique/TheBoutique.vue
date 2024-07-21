@@ -2,7 +2,6 @@
 import { computed, reactive } from 'vue'
 import CartView from './components/Cart/CartView.vue'
 import ShopView from './components/Shop/ShopView.vue'
-import data from '../../data/product'
 import type { ProductInterface, ProductCartInterface, FiltersInterface, FilterUpdate } from '@/interfaces/Index'
 import { DEFAULT_FILTERS } from '../../features/boutique/data/filters'
 
@@ -11,7 +10,7 @@ const state = reactive<{
   cart: ProductCartInterface[]
   filters: FiltersInterface
 }>({
-  products: data,
+  products: [],
   cart: [],
   filters: { ...DEFAULT_FILTERS }
 })
@@ -32,10 +31,10 @@ const filteredProducts = computed(() => {
   })
 })
 
-const addProductInCart = (idProduct: number): void => {
-  const product = state.products.find((product) => product.id === idProduct)
+const addProductInCart = (idProduct: string): void => {
+  const product = state.products.find((product) => product._id === idProduct)
   if (product) {
-    const productInCart = state.cart.find((product) => product.id === idProduct)
+    const productInCart = state.cart.find((product) => product._id === idProduct)
     if (productInCart) {
       productInCart.quantity++
     } else {
@@ -44,13 +43,13 @@ const addProductInCart = (idProduct: number): void => {
   }
 }
 
-const delProductInCart = (idProduct: number): void => {
-  const productInCart = state.cart.find((product) => product.id === idProduct)
+const delProductInCart = (idProduct: string): void => {
+  const productInCart = state.cart.find((product) => product._id === idProduct)
   if (productInCart) {
     if (productInCart.quantity > 1) {
       productInCart.quantity--
     } else {
-      state.cart = state.cart.filter((product) => product.id !== idProduct)
+      state.cart = state.cart.filter((product) => product._id !== idProduct)
     }
   }
 }
@@ -67,21 +66,26 @@ const updateFilter = (filterUpdate: FilterUpdate) => {
   }
 }
 
+async function fetchProduct() {
+  try {
+    const response = await fetch('https://restapi.fr/api/products', {
+      method: 'GET'
+    })
+    state.products = await response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+fetchProduct()
+
 </script>
 
 <template>
-  <div class="boutique-container" 
-      :class="{ 'grid-empty': state.cart.length === 0 }">
-    <ShopView 
-      class="shop" 
-      v-bind:products="filteredProducts" 
-      v-bind:filters="state.filters"
-      v-on:updateFilter="updateFilter" 
-      v-on:add-product-to-cart="addProductInCart" />
-    <CartView 
-      class="cart" 
-      v-bind:cart="state.cart" 
-      v-on:del-product-in-cart="delProductInCart" />
+  <div class="boutique-container" :class="{ 'grid-empty': state.cart.length === 0 }">
+    <ShopView class="shop" v-bind:products="filteredProducts" v-bind:filters="state.filters"
+      v-on:updateFilter="updateFilter" v-on:add-product-to-cart="addProductInCart" />
+    <CartView class="cart" v-bind:cart="state.cart" v-on:del-product-in-cart="delProductInCart" />
   </div>
 </template>
 

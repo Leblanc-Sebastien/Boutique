@@ -7,14 +7,14 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-    (e: 'delProductInCart', productId: number): void
+    (e: 'delProductInCart', productId: string): void
 }>()
 
 </script>
 
 <template>
     <div class="d-flex flex-column">
-        <CartProduct v-for="product of cart" v-bind:key="product.id" v-bind:product="product"
+        <CartProduct v-for="product of cart" v-bind:key="product._id" v-bind:product="product"
             v-on:del-product-in-cart="emit('delProductInCart', $event)" />
     </div>
 </template>

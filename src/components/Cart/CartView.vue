@@ -8,7 +8,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'delProductInCart', productId: number): void
+  (e: 'delProductInCart', productId: string): void
 }>()
 
 const totalPrice = computed(() =>
